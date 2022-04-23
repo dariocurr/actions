@@ -22,7 +22,6 @@ on:
         description: Target branch
         required: false
         type: string
-  workflow_dispatch:
 
 jobs:
   validate:
