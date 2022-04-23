@@ -1,11 +1,6 @@
 # for format details, see https://docs.github.com/actions
 
 name: Validate `Dockerfile`
-description: Validate your `Dockerfile` trying to build the image, then merge if required
-author: Dario Curreri
-branding:
-  icon: check
-  color: green
 
 on:
   workflow_call:
@@ -13,19 +8,21 @@ on:
       dockerfile:
         description: Path to `Dockerfile`
         required: true
-
+        type: string
       merge:
         description: Whether to merge after validation
         required: false
+        type: boolean
         default: false
-
       from:
         description: Origin branch
         required: false
-
+        type: string
       to:
         description: Target branch
         required: false
+        type: string
+  workflow_dispatch:
 
 jobs:
   validate:
