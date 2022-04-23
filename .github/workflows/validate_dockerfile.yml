@@ -35,8 +35,8 @@ jobs:
           push: false
           context: ${{ inputs.dockerfile }}
 
-  if: ${{ inputs.merge }}
   merge:
+    if: ${{ inputs.merge }}
     runs-on: ubuntu-latest
     steps:
       - name: Merge `from` in `to` branch
