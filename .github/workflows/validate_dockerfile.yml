@@ -36,6 +36,7 @@ jobs:
           context: ${{ inputs.dockerfile }}
 
   merge:
+    needs: validate
     if: ${{ inputs.merge }}
     runs-on: ubuntu-latest
     steps:
