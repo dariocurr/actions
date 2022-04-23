@@ -1,6 +1,6 @@
 # for format details, see https://docs.github.com/actions
 
-name: Validate `Dockerfile``
+name: Validate `Dockerfile`
 description: Validate your `Dockerfile` trying to build the image, then merge if required
 author: Dario Curreri
 branding:
