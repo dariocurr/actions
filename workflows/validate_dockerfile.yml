@@ -15,16 +15,16 @@ on:
         required: true
 
       merge:
-        description: "Whether to merge after validation"
+        description: Whether to merge after validation
         required: false
         default: false
 
       from:
-        description: "Origin branch"
+        description: Origin branch
         required: false
 
       to:
-        description: "Target branch"
+        description: Target branch
         required: false
 
 jobs:
@@ -50,4 +50,4 @@ jobs:
           from_branch: ${{ inputs.from }}
           target_branch: ${{ inputs.to }}
           github_token: ${{ github.token }}
-          message: Merging using Github Actions
+          message: Merging ${{ inputs.from }} into ${{ inputs.to }} using Github Actions
