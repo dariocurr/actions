@@ -1,0 +1,53 @@
+# for format details, see https://docs.github.com/actions
+
+name: Validate `Dockerfile``
+description: Validate your `Dockerfile` trying to build the image, then merge if required
+author: Dario Curreri
+branding:
+  icon: check
+  color: green
+
+on:
+  workflow_call:
+    inputs:
+      dockerfile:
+        description: Path to `Dockerfile`
+        required: true
+
+      merge:
+        description: "Whether to merge after validation"
+        required: false
+        default: false
+
+      from:
+        description: "Origin branch"
+        required: false
+
+      to:
+        description: "Target branch"
+        required: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Build Docker image
+        uses: docker/build-push-action@master
+        with:
+          push: false
+          context: ${{ inputs.dockerfile }}
+
+  if: ${{ inputs.merge }}
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge `from` in `to` branch
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: ${{ inputs.from }}
+          target_branch: ${{ inputs.to }}
+          github_token: ${{ github.token }}
+          message: Merging using Github Actions
