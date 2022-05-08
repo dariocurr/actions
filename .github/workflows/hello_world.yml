@@ -20,9 +20,10 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
+    
       - uses: actions/checkout@main
 
-      - name: Greeting 
+      - name: Greeting ${{ inputs.who-to-greet }}
         uses: dariocurr/actions/hello-world@main
         with:
           who-to-greet: ${{ inputs.who-to-greet }}

@@ -18,8 +18,10 @@ outputs:
 runs:
   using: "composite"
   steps:
+
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
+    
     - id: status
       run: echo "::set-output name=done::TRUE"
       shell: bash
