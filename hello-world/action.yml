@@ -23,5 +23,5 @@ runs:
       shell: bash
     
     - id: status
-      run: echo "::set-output name=done::TRUE"
+      run: echo "::set-output name=status::DONE"
       shell: bash
