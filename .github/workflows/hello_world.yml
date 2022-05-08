@@ -1,0 +1,28 @@
+# for format details, see https://docs.github.com/actions
+
+name: Hello World
+
+on:
+  workflow_call:
+    inputs:
+      who-to-greet:
+        description:  Who to greet
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      who-to-greet:
+        description:  Who to greet
+        required: true
+        type: string
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Greeting 
+        uses: dariocurr/actions/hello_world@main
+        with:
+          who-to-greet: ${{ inputs.who-to-greet }}

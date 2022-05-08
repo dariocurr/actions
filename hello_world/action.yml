@@ -1,0 +1,25 @@
+# for format details, see https://docs.github.com/actions
+
+name: Hello World
+author: Dario Curreri
+description: Greet someone
+
+inputs:
+  who-to-greet:
+    description: Who to greet
+    required: true
+    default: World
+
+outputs:
+  done:
+    description: Whether the execution was successful
+    value: ${{ steps.status.outputs.done }}
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
+    - id: status
+      run: echo "::set-output name=done::TRUE"
+      shell: bash
