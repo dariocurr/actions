@@ -11,7 +11,7 @@ inputs:
     default: World
 
 outputs:
-  random-number:
+  status:
     description: Status
     value: ${{ steps.status.outputs.status }}
 
