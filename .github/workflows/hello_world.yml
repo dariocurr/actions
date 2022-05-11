@@ -23,12 +23,10 @@ jobs:
     
       - uses: actions/checkout@main
 
-      - name: Greeting ${{ inputs.who-to-greet }}
+      - name: "Greeting: ${{ inputs.who-to-greet }}"
         id: greet
         uses: dariocurr/actions/hello-world@main
         with:
           who-to-greet: ${{ inputs.who-to-greet }}
 
-      - name: Status
-        run: echo ${{ steps.greet.outputs.status }}
-        shell: bash
+      - name: "Status: ${{ steps.greet.outputs.status }}"

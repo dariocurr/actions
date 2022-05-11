@@ -13,13 +13,13 @@ inputs:
 outputs:
   done:
     description: Whether the execution was successful
-    value: ${{ steps.status.outputs.done }}
+    value: ${{ steps.status.outputs.status }}
 
 runs:
   using: "composite"
   steps:
 
-    - run: echo Hello ${{ inputs.who-to-greet }}.
+    - run: echo Hello ${{ inputs.who-to-greet }}
       shell: bash
     
     - id: status
