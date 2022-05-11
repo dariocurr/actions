@@ -6,28 +6,28 @@ on:
   workflow_call:
     inputs:
       who-to-greet:
-        description:  Who to greet
+        description: Who to greet
         required: true
         type: string
   workflow_dispatch:
     inputs:
       who-to-greet:
-        description:  Who to greet
+        description: Who to greet
         required: true
         type: string
 
 jobs:
   greet:
     runs-on: ubuntu-latest
+    name: Greating
     steps:
-    
+
       - uses: actions/checkout@main
 
-      - name: "Greeting: ${{ inputs.who-to-greet }}"
-        id: greet
-        uses: dariocurr/actions/hello-world@main
+      - id: greet
+        uses: actions/hello-world-composite-action@v1
         with:
-          who-to-greet: ${{ inputs.who-to-greet }}
+          who-to-greet: ${{ github.event.inputs.who-to-greet }}
 
-      - name: "Status: ${{ steps.greet.outputs.status }}"
-        run: ""
+      - run: echo status ${{ steps.greet.outputs.status }}
+        shell: bash

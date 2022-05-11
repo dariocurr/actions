@@ -11,17 +11,17 @@ inputs:
     default: World
 
 outputs:
-  done:
-    description: Whether the execution was successful
+  random-number:
+    description: Status
     value: ${{ steps.status.outputs.status }}
 
 runs:
-  using: "composite"
+  using: composite
   steps:
 
-    - run: echo Hello ${{ inputs.who-to-greet }}
+    - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    
+
     - id: status
-      run: echo "::set-output name=status::DONE"
+      run: echo "::set-output name=status::$(echo DONE)"
       shell: bash
