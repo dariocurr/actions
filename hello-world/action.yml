@@ -19,9 +19,15 @@ runs:
   using: composite
   steps:
 
-    - run: echo Hello ${{ inputs.who-to-greet }}.
+    - run: echo Hello ${{ inputs.who-to-greet }}
       shell: bash
 
     - id: status
       run: echo "::set-output name=status::DONE"
+      shell: bash
+
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+
+    - run: goodbye.sh
       shell: bash
