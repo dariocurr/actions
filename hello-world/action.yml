@@ -31,3 +31,6 @@ runs:
 
     - run: goodbye.sh
       shell: bash
+
+    - run: echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
+      shell: bash
