@@ -1,0 +1,38 @@
+# for format details, see https://docs.github.com/actions
+
+name: Validate Python Code
+
+on:
+  workflow_call:
+    inputs:
+      path:
+        description: Path to tests
+        required: true
+        type: string
+        default: tests
+  workflow_dispatch:
+    inputs:
+      path:
+        description: Path to tests
+        required: true
+        type: string
+        default: tests
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Set up Python
+        uses: actions/setup-python@main
+        with:
+          python-version: "3.9"
+
+      - name: Install Pytest
+        run: pip install pytest pytest-md-report
+        shell: bash
+
+      - name: Run tests
+        run: pytest --md-report --md-report-zeros empty --md-report-verbose=1 \
+              ${{ inputs.path }} >> $GITHUB_STEP_SUMMARY
