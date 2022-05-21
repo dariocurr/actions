@@ -30,9 +30,13 @@ jobs:
           python-version: "3.9"
 
       - name: Install Pytest
-        run: pip install pytest pytest-md-report
-        shell: bash
+        run: pip install pytest
 
       - name: Run tests
-        run: pytest --md-report --md-report-zeros empty --md-report-verbose=1 \
-              ${{ inputs.path }} >> $GITHUB_STEP_SUMMARY
+        run: pytest --junit-xml=.test_report.xml ${{ inputs.path }}
+
+      - name: Create test summary
+        uses: test-summary/action@v1
+        with:
+          paths: .test_report.xml
+        if: always()
