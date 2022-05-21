@@ -33,7 +33,7 @@ jobs:
         run: pip install pytest pytest-md-report
 
       - name: Run tests
-        run: pytest --tb=no --md-report --md-report-color=never --md-report-verbose=1 --junit-xml=.test_report.xml ${{ github.event.inputs.path }} >> $GITHUB_STEP_SUMMARY
+        run: pytest --tb=no --quiet --md-report --md-report-color=never --md-report-verbose=1 --junit-xml=.test_report.xml ${{ github.event.inputs.path }} >> $GITHUB_STEP_SUMMARY
         shell: sh
 
       - name: Create test summary
