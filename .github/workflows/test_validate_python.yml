@@ -1,6 +1,6 @@
 # for format details, see https://docs.github.com/actions
 
-name: Validate Python
+name: "[TEST] Validate Python"
 
 on:
   workflow_call:

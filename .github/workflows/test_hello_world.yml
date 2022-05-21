@@ -1,6 +1,6 @@
 # for format details, see https://docs.github.com/actions
 
-name: Hello World
+name: "[TEST] Hello World"
 
 on:
   workflow_call:
