@@ -33,7 +33,9 @@ jobs:
         run: pip install pytest
 
       - name: Run tests
-        run: pytest --junit-xml=.test_report.xml ${{ inputs.path }}
+        run: pytest \
+          --md-report --md-report-zeros empty --md-report-verbose=1 \
+          --junit-xml=.test_report.xml ${{ inputs.path }} >> $GITHUB_STEP_SUMMARY
 
       - name: Create test summary
         uses: test-summary/action@v1
