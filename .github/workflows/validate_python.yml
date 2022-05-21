@@ -30,10 +30,11 @@ jobs:
           python-version: "3.9"
 
       - name: Install Pytest
-        run: pip install pytest pytest-md-report && pytest --help
+        run: pip install pytest pytest-md-report
 
       - name: Run tests
         run: pytest --md-report --md-report-zeros empty --md-report-verbose=1 --junit-xml=.test_report.xml ${{ github.event.inputs.path }} >> $GITHUB_STEP_SUMMARY
+        shell: bash
 
       - name: Create test summary
         uses: test-summary/action@v1
