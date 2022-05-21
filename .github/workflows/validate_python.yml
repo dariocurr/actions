@@ -34,7 +34,7 @@ jobs:
 
       - name: Run tests
         run: pytest --md-report --md-report-zeros empty --md-report-verbose=1 --junit-xml=.test_report.xml ${{ github.event.inputs.path }} >> $GITHUB_STEP_SUMMARY
-        shell: bash
+        shell: sh
 
       - name: Create test summary
         uses: test-summary/action@v1
