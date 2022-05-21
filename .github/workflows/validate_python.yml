@@ -33,8 +33,8 @@ jobs:
         run: pip install pytest pytest-md-report
 
       - name: Run tests
-        run: pytest --md-report --md-report-zeros empty --md-report-verbose=1 \
-          --junit-xml=.test_report.xml ${{ inputs.path }} >> $GITHUB_STEP_SUMMARY
+        run: pytest ${{ inputs.path }} --md-report --md-report-zeros empty \
+          --md-report-verbose=1 --junit-xml=.test_report.xml >> $GITHUB_STEP_SUMMARY
 
       - name: Create test summary
         uses: test-summary/action@v1
