@@ -30,4 +30,4 @@ jobs:
           python-version: "3.9"
 
       - name: Run tests
-        uses: dariocurr/actions/pytest-summaryd@main
+        uses: dariocurr/actions/pytest-summary@main
