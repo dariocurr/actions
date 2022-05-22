@@ -1,22 +1,9 @@
 # for format details, see https://docs.github.com/actions
 
-name: "[TEST] Validate Python"
+name: "[TEST] Validate Python: pytest"
 
 on:
-  workflow_call:
-    inputs:
-      path:
-        description: Path to tests
-        required: true
-        type: string
-        default: tests
   workflow_dispatch:
-    inputs:
-      path:
-        description: Path to tests
-        required: true
-        type: string
-        default: tests
 
 jobs:
   validate:
@@ -31,3 +18,5 @@ jobs:
 
       - name: Run tests
         uses: dariocurr/actions/pytest-summary@main
+        with:
+          path: tests/python
