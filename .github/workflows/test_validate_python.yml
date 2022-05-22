@@ -3,20 +3,14 @@
 name: "[TEST] Validate Python"
 
 on:
-  workflow_call:
+  workflow_call: &input
     inputs:
       path:
         description: Path to tests
         required: true
         type: string
         default: tests
-  workflow_dispatch:
-    inputs:
-      path:
-        description: Path to tests
-        required: true
-        type: string
-        default: tests
+  workflow_dispatch: *input
 
 jobs:
   validate:
@@ -29,14 +23,5 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Install Pytest
-        run: pip install pytest
-
       - name: Run tests
-        run: pytest --junit-xml=.test_report.xml ${{ github.event.inputs.path }}
-
-      - name: Create test summary
-        uses: test-summary/action@v1
-        with:
-          paths: .test_report.xml
-        if: always()
+        uses: dariocurr/actions/pytest-summaryd@main

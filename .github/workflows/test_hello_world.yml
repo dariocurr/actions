@@ -3,19 +3,15 @@
 name: "[TEST] Hello World"
 
 on:
-  workflow_call:
+  workflow_call: &input
     inputs:
       who-to-greet:
         description: Who to greet
         required: true
         type: string
-  workflow_dispatch:
-    inputs:
-      who-to-greet:
-        description: Who to greet
-        required: true
-        type: string
-
+        default: World
+  workflow_dispatch: *input
+    
 jobs:
   greet:
     runs-on: ubuntu-latest
