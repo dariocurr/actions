@@ -1,6 +1,6 @@
 # for format details, see https://docs.github.com/actions
 
-name: "[TEST] Validate Python: pytest"
+name: "[TEST] Validate Python"
 
 on:
   workflow_dispatch:
@@ -20,3 +20,4 @@ jobs:
         uses: dariocurr/actions/pytest-summary@main
         with:
           path: tests/python
+          options: -vv -s
