@@ -2,12 +2,16 @@
 
 name: Pytest summary
 author: Dario Curreri
-description: Run tests and display summary
+description: Run tests using pytest and display summary
 
 inputs:
   path:
     description: Path to folder containing tests
-    required: true
+    required: false
+    default: tests
+  options:
+    description: Pytest options
+    required: false
     default: tests
 
 runs:
@@ -17,7 +21,7 @@ runs:
     - run: pip install pytest
       shell: bash
 
-    - run: pytest --junit-xml=.test_report.xml ${{ inputs.path }}
+    - run: pytest ${{ inputs.options }} --junit-xml=.test_report.xml ${{ inputs.path }}
       shell: bash
 
     - uses: test-summary/action@v1
