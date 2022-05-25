@@ -7,12 +7,12 @@ description: Run tests using pytest and display summary
 inputs:
   path:
     description: Path to folder containing tests
-    required: false
-    default: tests
+    required: true
+    default: "tests"
   options:
     description: Pytest options
-    required: false
-    default: tests
+    required: true
+    default: ""
 
 runs:
   using: composite
