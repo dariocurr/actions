@@ -1,0 +1,3 @@
+[submodule "pytest-summary"]
+	path = pytest-summary
+	url = https://github.com/dariocurr/pytest-summary
