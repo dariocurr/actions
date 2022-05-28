@@ -19,5 +19,5 @@ jobs:
       - name: Run tests
         uses: dariocurr/pytest-summary@main
         with:
-          path: tests/python
+          path: tests/pytest-summary
           options: -vv -s
